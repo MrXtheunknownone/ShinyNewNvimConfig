@@ -1,4 +1,3 @@
-
 -- Windows
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -24,6 +23,26 @@ vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+
+-- LSP
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
+vim.keymap.set("n", "gi", function()
+        require("telescope.builtin").lsp_implementations()
+end, { desc = "[G]oto [I]mplementation" })
+vim.keymap.set("n", "gt", function()
+        require("telescope.builtin").lsp_type_definitions()
+end, { desc = "[G]oto [T]ype Definition"})
+
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
+vim.keymap.set("n", "<leader>u", function()
+        require("telescope.builtin").lsp_references()
+end, { desc = "[G]oto [U]sages" })
+
+vim.keymap.set("n", "<leader>q", vim.lsp.buf.hover, { desc = "[Q]uick Hover" })
+vim.keymap.set("n", "<leader>p", vim.lsp.buf.signature_help, { desc = "Signature Hel[P]" })
+
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "Code [A]ction" })
+vim.keymap.set("n", "<leader>m", vim.lsp.buf.format, { desc = "[F]ormat Buffer" })
 
 -- Utilities
 vim.keymap.set("n", "Y", "y$")
