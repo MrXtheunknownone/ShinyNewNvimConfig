@@ -27,4 +27,4 @@ vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 -- Utilities
 vim.keymap.set("n", "Y", "y$")
-vim.keymap.set("n", "<leader>t", "<cmd>vsp | term<cr>40<C-w><i", { desc = "New [T]erminal" })
+vim.keymap.set("n", "<leader>t", "<cmd>vsp | term<cr>50<C-w><i", { desc = "New [T]erminal" })
