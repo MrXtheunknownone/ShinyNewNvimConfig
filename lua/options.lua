@@ -15,7 +15,8 @@ vim.opt.expandtab = true
 vim.opt.clipboard = "unnamedplus"
 vim.g.mapleader = " "
 
-vim.opt.scrolloff = 150
+vim.opt.scrolloff = 23
+vim.opt.cursorline = true
 
 vim.opt.updatetime = 250
 
@@ -28,5 +29,5 @@ vim.opt.inccommand = "split"
 vim.opt.termguicolors = true
 
 vim.diagnostic.config({
-        virtual_lines = true
+	virtual_lines = true,
 })
