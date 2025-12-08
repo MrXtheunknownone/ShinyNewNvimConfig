@@ -52,3 +52,4 @@ vim.keymap.set("n", "<leader>m", vim.lsp.buf.format, { desc = "[F]ormat Buffer" 
 -- Utilities
 vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("n", "<leader>t", "<cmd>vsp | term<cr>50<C-w><i", { desc = "New [T]erminal" })
+vim.keymap.set("n", "<leader>b", "<cmd>BlameToggle<cr>", { desc = "Toggle Git Blame" })
