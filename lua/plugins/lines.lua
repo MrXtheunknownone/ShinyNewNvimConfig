@@ -4,6 +4,7 @@ return {
 	opts = {
 		tabline = {
 			lualine_a = { "string.match(vim.uv.cwd(), '([^/]+)$')" },
+			lualine_b = { "tabs" },
 		},
 	},
 }
