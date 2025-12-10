@@ -17,7 +17,8 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		opts = {
 			-- Currently a bug in lua's electrical system
-			ensure_installed = { "lua_ls@3.15.0", "rust_analyzer" },
+			-- ensure_installed = { "lua_ls@3.15.0", "rust_analyzer" },
+			ensure_installed = { "rust_analyzer" },
 		},
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },

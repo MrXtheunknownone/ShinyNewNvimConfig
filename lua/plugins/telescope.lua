@@ -16,7 +16,9 @@ return {
 				builtin.find_files({ hidden = true })
 			end, { desc = "[F]ind [o]ld files" })
 
-			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+			vim.keymap.set("n", "<leader>fg", function()
+				builtin.live_grep({ hidden = true })
+			end, { desc = "Telescope live [G]rep" })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "Telescope buffers" })
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 		end,
