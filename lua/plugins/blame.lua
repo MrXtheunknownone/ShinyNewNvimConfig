@@ -6,6 +6,7 @@ return {
 			blame_options = { "-w" },
 			mappings = {
 				commit_info = "c",
+				close = {},
 			},
 		},
 	},

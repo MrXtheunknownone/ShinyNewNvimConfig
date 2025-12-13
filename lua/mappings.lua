@@ -15,10 +15,16 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Tabs
-vim.keymap.set("n", "<M-t>", ":tabnew<CR>")
-vim.keymap.set("n", "<M-q>", ":tabclose<CR>")
-vim.keymap.set("n", "<M-h>", ":-tabnext<CR>")
-vim.keymap.set("n", "<M-l>", ":+tabnext<CR>")
+vim.keymap.set("n", "<M-t>", "<cmd>tabnew<CR>")
+vim.keymap.set("n", "<M-T>", function()
+	require("easyTabs").run()
+end)
+vim.keymap.set("n", "<M-q>", "<cmd>tabclose<CR>")
+vim.keymap.set("n", "<M-h>", "<cmd>-tabnext<CR>")
+vim.keymap.set("n", "<M-l>", "<cmd>+tabnext<CR>")
+
+vim.keymap.set("n", "<M-left>", "<cmd>-tabmove<cr>", { desc = "Move Tab to left" })
+vim.keymap.set("n", "<M-right>", "<cmd>+tabmove<cr>", { desc = "Move Tab to right" })
 
 -- Navigation
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
@@ -62,3 +68,5 @@ vim.keymap.set("v", "/", "y/<C-r>*")
 vim.keymap.set("n", "<leader>t", "<cmd>vsp | term<cr>50<C-w><i", { desc = "New [T]erminal" })
 vim.keymap.set("n", "<leader>b", "<cmd>BlameToggle<cr>", { desc = "Toggle Git Blame" })
 vim.keymap.set("n", "<leader>j", "<cmd>tabnext | term<cr>ijiratui ui<cr>", { desc = "Open Jira TUI" })
+vim.keymap.set("n", "<leader>X", "<cmd>.lua<cr>", { desc = "Run lua line" })
+vim.keymap.set("n", "<leader>x", "<cmd>source %<cr>", { desc = "Run lua file" })
