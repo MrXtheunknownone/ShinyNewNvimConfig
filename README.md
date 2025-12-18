@@ -8,4 +8,4 @@ chmod +x setup_tmux.sh
 ./setup_tmux.sh
 ```
 
-Then update Tmux Plugin Manager with <C-s> + I
+Then update Tmux Plugin Manager with `<C-s> + I`
