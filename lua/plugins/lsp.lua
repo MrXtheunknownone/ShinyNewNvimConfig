@@ -28,25 +28,39 @@ return {
 			{ "mason-org/mason.nvim", opts = {} },
 			"neovim/nvim-lspconfig",
 		},
-		-- config = function()
-		-- require("mason-lspconfig").setup({
-		-- 	function(server_name)
-		-- 		require("lspconfig")[server_name].setup({
-		-- 			on_attach = function(client, bufnr)
-		-- 				require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
-		-- 			end,
-		-- 		})
-		-- 	end,
-		-- })
-		-- end,
+		config = function()
+			require("mason-lspconfig").setup({
+				function(server_name)
+					require("lspconfig")[server_name].setup({
+						on_attach = function(client, bufnr)
+							require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+						end,
+					})
+				end,
+			})
+		end,
+	},
+	{
+		'stevearc/conform.nvim',
+		opts = {
+			formatters = {
+				prettier = {
+					command = vim.fn.expand("~/.local/share/nvim/mason/bin/prettier")
+				},
+			},
+			formatters_by_ft = {
+				-- lua = { "lua_ls" },
+
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescriptreact = { "prettier" },
+
+				java = { "google-java-format" },
+
+			},
+		},
 	},
 	{ "mfussenegger/nvim-jdtls" },
-	-- {
-	-- 	"nvim-java/nvim-java",
-	-- 	config = function()
-	-- require("java").setup({})
-	-- 		vim.lsp.enable("jdtls")
-	-- 	end,
-	-- },
-	-- { "artemave/workspace-diagnostics.nvim", opts = {} },
+	{ "artemave/workspace-diagnostics.nvim", opts = {} },
 }

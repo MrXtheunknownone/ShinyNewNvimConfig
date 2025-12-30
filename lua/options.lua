@@ -13,6 +13,22 @@ vim.opt.smartcase = true
 vim.opt.expandtab = true
 
 vim.opt.clipboard = "unnamedplus"
+-- vim.schedule(function()
+--   vim.o.clipboard = "unnamedplus"
+--   vim.g.clipboard = {
+--     name = "wsl clipboard",
+--     copy = {
+--       ["+"] = { "clip.exe" },
+--       ["*"] = { "clip.exe" },
+--     },
+--     paste = {
+--       ["+"] = { "/home/tim/.config/.scripts/nvim_paste" },
+--       ["*"] = { "/home/tim/.config/.scripts/nvim_paste" },
+--     },
+--     cache_enabled = true,
+--   }
+-- end)
+
 vim.g.mapleader = " "
 
 vim.opt.scrolloff = 23

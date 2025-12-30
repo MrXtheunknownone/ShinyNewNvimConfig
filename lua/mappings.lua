@@ -63,7 +63,9 @@ vim.keymap.set("n", "<leader>e", function()
 	require("telescope.builtin").diagnostics()
 end, { desc = "Show [E]rrors" })
 vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "Code [A]ction" })
-vim.keymap.set("n", "<leader>m", vim.lsp.buf.format, { desc = "[F]ormat Buffer" })
+vim.keymap.set("n", "<leader>m", function()
+	require("conform").format()
+end, { desc = "[F]ormat Buffer" })
 
 -- Utilities
 vim.keymap.set("n", "Y", "y$")

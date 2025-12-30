@@ -1,7 +1,8 @@
-local java_dir = vim.fn.expand("~/.config/nvim/lua/java/")
+local java_dir = vim.fn.expand("~/.config/nvim/lua/java/");
+
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t");
 
 vim.lsp.config("jdtls", {
-
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	-- cmd = { "jdtls", "-jar", "-javaagent:" .. java_dir .. "lombok.jar" },
 	cmd = {
@@ -23,7 +24,7 @@ vim.lsp.config("jdtls", {
 		"-configuration",
 		"/home/tim/.local/share/nvim/mason/packages/jdtls/config_linux",
 		"-data",
-		"/home/tim/.cache/jdtls",
+		"/home/tim/.cache/jdtls/" .. project_name,
 	},
 
 	root_dir = vim.fs.root(0, { "gradlew", ".git", "mvnw" }),
@@ -32,9 +33,10 @@ vim.lsp.config("jdtls", {
 	settings = {
 		java = {
 			format = {
-				enabled = true,
+				enabled = false, -- Currently off. Using Google-Java-Format (See Mason)
 				settings = {
 					url = java_dir .. "eclipse-java-google-style.xml",
+					profile = "GoogleStyle",
 				},
 			},
 		},
@@ -45,4 +47,3 @@ vim.lsp.config("jdtls", {
 	},
 })
 vim.lsp.enable("jdtls")
--- require("jdtls").start_or_attach(config)
