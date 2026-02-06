@@ -49,7 +49,7 @@ return {
 				},
 			},
 			formatters_by_ft = {
-				-- lua = { "lua_ls" },
+				-- lua = { "lua-language-server" },
 
 				javascript = { "prettier" },
 				typescript = { "prettier" },
@@ -59,6 +59,9 @@ return {
 				java = { "google-java-format" },
 
 			},
+      default_format_opts = {
+        lsp_format = "fallback",
+      },
 		},
 	},
 	{ "mfussenegger/nvim-jdtls" },
