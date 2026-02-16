@@ -16,4 +16,11 @@ return {
 			-- require("bamboo").load()
 		end,
 	},
+	{
+		"daschw/leaf.nvim",
+		opts = {
+			theme = "dark",
+			contrast = "medium",
+		}
+	}
 }

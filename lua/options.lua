@@ -4,7 +4,7 @@ vim.opt.tabstop = 4
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.diffopt= "vertical"
+vim.opt.diffopt= {"vertical", "filler"}
 
 vim.opt.breakindent = true
 vim.opt.signcolumn = "yes"

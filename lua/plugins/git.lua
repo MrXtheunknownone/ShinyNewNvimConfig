@@ -40,6 +40,7 @@ return {
 		},
 	},
 }
+
 --   TODO TL: Check what to take from Gitsigns default config:
 --   signs = {
 --     add          = { text = '┃' },
