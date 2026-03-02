@@ -2,6 +2,11 @@ local java_dir = vim.fn.expand("~/.config/nvim/lua/java/");
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t");
 
+local bundles = {
+	vim.fn.expand(
+		"~/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar")
+}
+
 vim.lsp.config("jdtls", {
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	-- cmd = { "jdtls", "-jar", "-javaagent:" .. java_dir .. "lombok.jar" },
@@ -43,9 +48,8 @@ vim.lsp.config("jdtls", {
 			},
 		},
 	},
-
 	init_options = {
-		bundles = {},
+		bundles = bundles,
 	},
 })
 vim.lsp.enable("jdtls")
