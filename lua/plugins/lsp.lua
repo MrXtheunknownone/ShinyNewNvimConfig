@@ -57,6 +57,7 @@ return {
 				typescriptreact = { "prettier" },
 
 				java = { "google-java-format" },
+				dart = { "ast-grep" }
 
 			},
 		},
