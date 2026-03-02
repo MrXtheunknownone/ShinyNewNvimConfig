@@ -2,17 +2,23 @@ local java_dir = vim.fn.expand("~/.config/nvim/lua/java/");
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t");
 
+local bundles = {
+	vim.fn.expand(
+		"~/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar")
+}
+
 vim.lsp.config("jdtls", {
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	-- cmd = { "jdtls", "-jar", "-javaagent:" .. java_dir .. "lombok.jar" },
 	cmd = {
 		"java",
+		"-Dfile.encoding=UTF-8", -- Because some people need to have ä, ö, ü in their filenames... o_O This won't work for Windows-german non UTF-8 though
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 		"-Dosgi.bundles.defaultStartLevel=4",
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
 		"-Dlog.protocol=true",
 		"-Dlog.level=ALL",
-		"-Xms1g",
+		"-Xmx16G",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
 		"java.base/java.util=ALL-UNNAMED",
@@ -27,11 +33,12 @@ vim.lsp.config("jdtls", {
 		"/home/tim/.cache/jdtls/" .. project_name,
 	},
 
-	root_dir = vim.fs.root(0, { "gradlew", ".git", "mvnw" }),
+	root_dir = vim.fs.root(0, { "settings.gradle.kts", "gradlew", ".git", "mvnw" }),
 
 	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
 	settings = {
 		java = {
+			signatureHelp = { enabled = true },
 			format = {
 				enabled = false, -- Currently off. Using Google-Java-Format (See Mason)
 				settings = {
@@ -41,9 +48,8 @@ vim.lsp.config("jdtls", {
 			},
 		},
 	},
-
 	init_options = {
-		bundles = {},
+		bundles = bundles,
 	},
 })
 vim.lsp.enable("jdtls")

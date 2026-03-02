@@ -56,7 +56,7 @@ vim.keymap.set("n", "<leader>p", vim.lsp.buf.signature_help, { desc = "Signature
 vim.keymap.set("n", "<leader>E", vim.diagnostic.open_float, { desc = "Show Hover [E]rrors" })
 
 vim.keymap.set("n", "<leader>d", function()
-require("toggle_diagnostics").toggle_inline_diagnostics()
+	require("toggle_diagnostics").toggle_inline_diagnostics()
 end, { desc = "Toggle inline diagnostic" })
 
 vim.keymap.set("n", "<leader>e", function()
@@ -72,7 +72,12 @@ vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("v", "/", "y/<C-r>*")
 vim.keymap.set("v", "?", "y?<C-r>*")
 
-vim.keymap.set("n", "<leader>t", "<cmd>vsp | term<cr>50<C-w><i", { desc = "New [T]erminal" })
+vim.keymap.set({"n", "t"}, "<leader>t", "<cmd>Floaterminal<cr>", { desc = "Toggle [T]erminal" })
+
+vim.keymap.set("n", "<leader>T", function()
+	require('xstodo').open()
+end, { desc = "New [T]erminal" })
+
 vim.keymap.set("n", "<leader>b", "<cmd>BlameToggle<cr>", { desc = "Toggle Git Blame" })
 -- vim.keymap.set("n", "<leader>j", "<cmd>tabnext | term<cr>ijiratui ui<cr>", { desc = "Open Jira TUI" })
 vim.keymap.set("n", "<leader>X", "<cmd>.lua<cr>", { desc = "Run lua line" })
