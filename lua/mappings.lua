@@ -72,7 +72,7 @@ vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("v", "/", "y/<C-r>*")
 vim.keymap.set("v", "?", "y?<C-r>*")
 
-vim.keymap.set({"n", "t"}, "<leader>t", "<cmd>Floaterminal<cr>", { desc = "Toggle [T]erminal" })
+vim.keymap.set({"n"}, "<leader>t", "<cmd>Floaterminal<cr>", { desc = "Toggle [T]erminal" })
 
 vim.keymap.set("n", "<leader>T", function()
 	require('xstodo').open()

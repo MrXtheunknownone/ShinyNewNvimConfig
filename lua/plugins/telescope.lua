@@ -12,9 +12,6 @@ return {
 			vim.keymap.set("n", "<leader>ff", function()
 				builtin.find_files({ hidden = true })
 			end, { desc = "Telescope find files" })
-			vim.keymap.set("n", "<leader>fo", function()
-				builtin.find_files({ hidden = true })
-			end, { desc = "[F]ind [o]ld files" })
 
 			vim.keymap.set("n", "<leader>fg", function()
 				builtin.live_grep({ hidden = true })
@@ -56,6 +53,8 @@ return {
 
 			telescope.setup({
 				defaults = {
+					file_ignore_patterns = { ".git/", "node_modules" },
+					path_display = { "filename_first", shorten = 8, "truncate" },
 					mappings = {
 						i = {
 							["<C-g>"] = actions.send_to_qflist + actions.open_qflist,
@@ -67,16 +66,6 @@ return {
 				}
 			})
 		end,
-		-- -- opts = {
-		-- -- 		defaults = {
-		-- -- 			mappings = {
-		-- -- 				t = {
-		-- -- 					["<C-<"] = require "telescope.actions".send_to_qflist + require "telescope.actions".open_qflist,
-		-- -- 					["<M-<"] = require "telescope.actions".send_selected_to_qflist + require "telescope.actions".open_qflist,
-		-- -- 				}
-		-- -- 			}
-		-- 		}
-		-- }
 	},
 	{
 		"jemag/telescope-diff.nvim",

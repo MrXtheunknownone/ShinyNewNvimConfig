@@ -1,7 +1,5 @@
 return {
 	"stevearc/oil.nvim",
-	---@module 'oil'
-	---@type oil.SetupOpts
 	opts = {
 		keymaps = {
 			["g?"] = { "actions.show_help", mode = "n" },

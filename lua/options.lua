@@ -33,6 +33,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.g.mapleader = " "
 
 vim.opt.scrolloff = 23
+vim.opt.scroll = 10
 vim.opt.cursorline = true
 
 vim.opt.updatetime = 250

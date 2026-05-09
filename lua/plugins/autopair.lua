@@ -5,8 +5,8 @@ return {
 		branch = "v0.6",
 		opts = {},
 	},
-	{ "windwp/nvim-ts-autotag",          opts = {} },
-	{ "hiphish/rainbow-delimiters.nvim" },
+	{ "windwp/nvim-ts-autotag", opts = {} },
+	{ enabled = false,          "hiphish/rainbow-delimiters.nvim" },
 	{
 		"kana/vim-textobj-entire",
 		dependencies = { "kana/vim-textobj-user" },
