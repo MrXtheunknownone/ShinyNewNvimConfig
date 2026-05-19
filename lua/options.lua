@@ -32,7 +32,7 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.g.mapleader = " "
 
-vim.opt.scrolloff = 23
+vim.opt.scrolloff = 10
 vim.opt.scroll = 10
 vim.opt.cursorline = true
 
