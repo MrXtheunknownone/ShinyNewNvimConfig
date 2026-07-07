@@ -1,7 +1,7 @@
 return {
   "folke/flash.nvim",
   event = "VeryLazy",
-  config = {
+  opts = {
     modes = {
       char = {
         enabled = false

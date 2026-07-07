@@ -8,6 +8,11 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		-- init_options = {
+		-- 	userLanguages = {
+		-- 		rust = "html"
+		-- 	}
+		-- },
 		config = function()
 			require("java.jdtls")
 			vim.lsp.config("dartls", {})
@@ -29,6 +34,7 @@ return {
 			"neovim/nvim-lspconfig",
 		},
 		config = function()
+			vim.diagnostic.config({ update_in_insert = false });
 			require("mason-lspconfig").setup({
 				function(server_name)
 					require("lspconfig")[server_name].setup({
@@ -57,12 +63,16 @@ return {
 				typescriptreact = { "prettier" },
 
 				java = { "google-java-format" },
-				dart = { "ast-grep" }
+				dart = { "ast-grep" },
+
+				yaml = { "prettier" },
+			  json = { "prettier" },
+				xml = { "xmlformatter" }
 
 			},
-      default_format_opts = {
-        lsp_format = "fallback",
-      },
+			default_format_opts = {
+				lsp_format = "fallback",
+			},
 		},
 	},
 	{ "mfussenegger/nvim-jdtls" },

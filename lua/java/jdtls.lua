@@ -7,6 +7,24 @@ local bundles = {
 		"~/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar")
 }
 
+local function buf_in_diff(bufnr)
+	for _, win in ipairs(vim.fn.win_findbuf(bufnr)) do
+		if vim.api.nvim_get_option_value("diff", { win = win }) then
+			return true
+		end
+	end
+	return false
+end
+
+local function jdtls_running_for(root)
+	for _, client in ipairs(vim.lsp.get_clients({ name = "jdtls" })) do
+		if client.config.root_dir == root then
+			return true
+		end
+	end
+	return false
+end
+
 vim.lsp.config("jdtls", {
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	-- cmd = { "jdtls", "-jar", "-javaagent:" .. java_dir .. "lombok.jar" },
@@ -17,9 +35,9 @@ vim.lsp.config("jdtls", {
 		"-Dosgi.bundles.defaultStartLevel=4",
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
 		"-Dlog.protocol=true",
-		"-Dlog.level=ALL",
-		"-Xms4G",
-		"-Xmx7G",
+		"-Dlog.level=INFO",
+		"-Xms512m",
+		"-Xmx1g",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
 		"java.base/java.util=ALL-UNNAMED",
@@ -34,7 +52,19 @@ vim.lsp.config("jdtls", {
 		"/home/tim/.cache/jdtls/" .. project_name,
 	},
 
-	root_dir = vim.fs.root(0, { "settings.gradle.kts", "gradlew", ".git", "mvnw" }),
+	root_dir = function(bufnr, on_dir)
+		local root = vim.fs.root(bufnr, { "settings.gradle.kts", "gradlew", ".git", "mvnw" })
+		if not root then
+			return
+		end
+
+		local is_diff = buf_in_diff(bufnr) or vim.tbl_contains(vim.v.argv, "-d")
+		if is_diff and not jdtls_running_for(root) then
+			return -- diffing into a project with no jdtls running yet: don't start it
+		end
+
+		on_dir(root)
+	end,
 
 	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
 	settings = {
