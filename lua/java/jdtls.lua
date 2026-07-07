@@ -1,4 +1,5 @@
 local java_dir = vim.fn.expand("~/.config/nvim/lua/java/");
+local launcher = vim.fn.expand("~/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar");
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t");
 
@@ -45,7 +46,7 @@ vim.lsp.config("jdtls", {
 		"java.base/java.lang=ALL-UNNAMED",
 		"-javaagent:" .. java_dir .. "lombok.jar",
 		"-jar",
-		"/home/tim/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar",
+		launcher,
 		"-configuration",
 		"/home/tim/.local/share/nvim/mason/packages/jdtls/config_linux",
 		"-data",
