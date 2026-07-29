@@ -48,12 +48,16 @@ vim.lsp.config("jdtls", {
 		"-jar",
 		launcher,
 		"-configuration",
-		"/home/tim/.local/share/nvim/mason/packages/jdtls/config_linux",
+		vim.fn.stdpath("data") .. "/mason/packages/jdtls/config_linux",
 		"-data",
-		"/home/tim/.cache/jdtls/" .. project_name,
+		vim.fn.stdpath("cache") .. "/jdtls/" .. project_name,
 	},
 
 	root_dir = function(bufnr, on_dir)
+		if require("java.dev_project").root_for(vim.api.nvim_buf_get_name(bufnr)) then
+			return -- java-lsp-dev handles this project instead
+		end
+
 		local root = vim.fs.root(bufnr, { "settings.gradle.kts", "gradlew", ".git", "mvnw" })
 		if not root then
 			return

@@ -1,3 +1,3 @@
 return {
-  dir = "~/myNvimPlugins/xstodo.nvim/"
+  "MrXtheunknownone/xstodo.nvim"
 }

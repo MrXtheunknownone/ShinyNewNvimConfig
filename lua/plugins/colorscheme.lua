@@ -8,6 +8,27 @@ return {
 		end,
 	},
 	{
+		'everviolet/nvim',
+		name = 'evergarden',
+		opts = {
+			theme = {
+				variant = 'fall',
+				accent = 'green',
+			},
+			editor = {
+				transparent_background = false,
+				sign = { color = 'none' },
+				float = {
+					color = 'mantle',
+					solid_border = false,
+				},
+				completion = {
+					color = 'surface0',
+				},
+			},
+		}
+	},
+	{
 		"ribru17/bamboo.nvim",
 		lazy = false,
 		priority = 1000,

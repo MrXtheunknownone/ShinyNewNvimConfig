@@ -15,6 +15,7 @@ return {
 		-- },
 		config = function()
 			require("java.jdtls")
+			require("java.java_lsp_dev")
 			vim.lsp.config("dartls", {})
 			vim.lsp.enable("dartls")
 		end,
@@ -49,11 +50,6 @@ return {
 	{
 		'stevearc/conform.nvim',
 		opts = {
-			formatters = {
-				prettier = {
-					command = vim.fn.expand("~/.local/share/nvim/mason/bin/prettier")
-				},
-			},
 			formatters_by_ft = {
 				-- lua = { "lua-language-server" },
 
@@ -77,4 +73,18 @@ return {
 	},
 	{ "mfussenegger/nvim-jdtls" },
 	{ "artemave/workspace-diagnostics.nvim", opts = {} },
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "mason-org/mason.nvim" },
+		opts = {
+			ensure_installed = {
+				"jdtls",
+				"java-debug-adapter",
+				"prettier",
+				"google-java-format",
+				"ast-grep",
+				"xmlformatter",
+			},
+		},
+	},
 }
